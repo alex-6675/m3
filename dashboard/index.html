@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Мои записки — доска m3</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --line:#2d333b; --ink:#e6edf3;
+    --dim:#8b949e; --past:#58a6ff; --now:#e8b931; --next:#8b949e;
+    --accent:#3fb950; --mono:ui-monospace,Consolas,monospace;
+    --disp:Georgia,'Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,Segoe UI,sans-serif;min-height:100vh}
+  .wrap{max-width:1100px;margin:0 auto;padding:48px 24px 64px}
+  header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:36px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  h1{font:700 30px/1.15 var(--disp);letter-spacing:.01em}
+  .tag{font:11px var(--mono);color:var(--dim);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .col{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;overflow:hidden;transition:transform .18s ease,border-color .18s ease}
+  .col:hover{transform:translateY(-3px)}
+  .col::before{content:"";position:absolute;inset:0 0 auto 0;height:3px}
+  .past::before{background:var(--past)} .past:hover{border-color:var(--past)}
+  .now::before{background:var(--now)}   .now:hover{border-color:var(--now)}
+  .next::before{background:var(--next)} .next:hover{border-color:var(--next)}
+  .epoch{font:11px var(--mono);text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px}
+  .past .epoch{color:var(--past)} .now .epoch{color:var(--now)} .next .epoch{color:var(--dim)}
+  h2{font:700 20px var(--disp);margin-bottom:12px}
+  ul{list-style:none}
+  li{padding:7px 0 7px 20px;position:relative;color:var(--dim);font-size:13.5px;border-bottom:1px dashed var(--line)}
+  li:last-child{border-bottom:none}
+  li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;border-radius:50%}
+  .past li::before{background:var(--past)} .now li::before{background:var(--now)} .next li::before{background:var(--next)}
+  .st{float:right;font:10px var(--mono);padding:2px 8px;border-radius:999px;border:1px solid var(--line)}
+  .done{color:var(--accent);border-color:var(--accent)}
+  .wip{color:var(--now);border-color:var(--now)}
+  .plan{color:var(--dim)}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--now);margin-right:7px;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(232,185,49,.5)}50%{opacity:.55;box-shadow:0 0 0 6px rgba(232,185,49,0)}}
+  footer{margin-top:40px;font:11px var(--mono);color:var(--dim);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Мои записки · доска</h1>
+    <span class="tag">m3 · mem-2026 · TASK-0100</span>
+  </header>
+  <div class="grid">
+    <section class="col past">
+      <div class="epoch">Прошлое</div>
+      <h2>Этап 0</h2>
+      <ul>
+        <li><span class="st done">DONE</span>Контрольный каркас MV3</li>
+        <li><span class="st done">DONE</span>Диагностический канал</li>
+        <li><span class="st done">DONE</span>Опознание портала, id</li>
+      </ul>
+    </section>
+    <section class="col now">
+      <div class="epoch">Настоящее</div>
+      <h2><span class="pulse"></span>Этап 1</h2>
+      <ul>
+        <li><span class="st wip">WIP</span>Картотека, изъятие по ПКМ</li>
+        <li><span class="st wip">WIP</span>Файл-первичное хранение</li>
+        <li><span class="st wip">WIP</span>Слой отрисовки (стекло)</li>
+      </ul>
+    </section>
+    <section class="col next">
+      <div class="epoch">Будущее</div>
+      <h2>Этапы 2–3</h2>
+      <ul>
+        <li><span class="st plan">PLAN</span>Этап 2 — маркировка, скальпель</li>
+        <li><span class="st plan">PLAN</span>Этап 3 — картотека-UI, экспорт</li>
+        <li><span class="st plan">PLAN</span>трек mem-2026</li>
+      </ul>
+    </section>
+  </div>
+  <footer>прошлое — настоящее — будущее · статика, ноль зависимостей</footer>
+</div>
+</body>
+</html>

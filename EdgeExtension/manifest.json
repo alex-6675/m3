@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Мои записки",
+  "version": "0.1.0",
+  "description": "Картотека записок — каркас m3. Логика не заполнена (TASK-0100).",
+  "permissions": ["contextMenus", "storage"],
+  "background": { "service_worker": "src/background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://vk.ru/*"],
+      "js": ["src/core/messaging.js", "src/core/normalize.js", "src/core/storage.js", "src/ui/layer.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": ["https://vk.ru/*"]
+}
